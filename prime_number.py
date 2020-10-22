@@ -52,7 +52,7 @@ def count_primes(num):
 
     '''
 
-    This function cotains 2 for loops, one for all numbers from 2 to num
+    This function contains 2 for loops, one for all numbers from 2 to num
     and devideseach of them for the devisors contained in the second loop.
     The count variable counts the number of primes and the iterations
     are the number of divisons made in the process.

@@ -6,8 +6,8 @@
 def fib_gen(n):
 
     '''This function is called by main_func().
-    First it checks for a positive integer,
-    then it starts to iterate until n'''
+    It's a generator that takes n as argument.
+    It iterates n times'''
 
     iterations = 0
     fib_num = 0

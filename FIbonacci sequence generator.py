@@ -2,16 +2,13 @@
     It contains a main function and a nested function within it'''
 
 
+
 def fib_gen(n):
 
     '''This function is called by main_func().
     First it checks for a positive integer,
     then it starts to iterate until n'''
 
-    if n <= 0:
-        print('No numbers')
-   
-    
     iterations = 0
     fib_num = 0
     next_num = 1
@@ -24,6 +21,7 @@ def fib_gen(n):
         iterations += 1
         
 def main_func():
+
     ''' This function asks first how many numbers of the sequence are needed.
         Then it asks whether the whole sequence up to the n-number needs to be
         printed or only the n-number. In the first case the iterator will print()
@@ -33,19 +31,28 @@ def main_func():
     while True:
         try:
             n = int(input("How many numbers in the Fibonacci series do you need?"))
-        except AttributeError:
+        except ValueError:
+            print('Please insert an integer!')
+            break
+        else:
+            pass
+
+        if n > 0:
             pass
         else:
+            print('No numbers!')
             break
-    print('Do you want to know only the n-th number in the Fibonacci sequence')
-    print('or you want to see generated the whole sequence?')
-    choice = int(input('Please press 1 for the first option or press 2 for the second option'))
-    if choice == 1:
-        list_cast = list(fib_gen(n))
-        print(f'The {n}-th number of the Fibonacci sequence is {list_cast[-1]}')
-    else:
-        for item in fib_gen(n):
-            print(item)
+        print('Do you want to know only the n-th number in the Fibonacci sequence')
+        print('or you want to see generated the whole sequence?')
+        choice = int(input('Please press 1 for the first option or press 2 for the second option'))
+        if choice == 1:
+            list_cast = list(fib_gen(n))
+            print(f'The {n}-th number of the Fibonacci sequence is {list_cast[-1]}')
+            break
+        else:
+            for item in fib_gen(n):
+                print(item)
+            break
     
     
 

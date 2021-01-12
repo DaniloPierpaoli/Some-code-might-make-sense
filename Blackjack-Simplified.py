@@ -124,7 +124,7 @@ class Players:
         for card in self.cards:
             value = value + card.value
         
-        return card
+        return value
     
 
 
@@ -199,6 +199,8 @@ while game_on:
     player.bet = int(input("How much do you want to bet in £?  \n"))
     if player.bet > player.balance:
         player.bet = player.balance
+    elif player.bet > dealer.balance:
+        player.bet = dealer.balance
         print('ALL IN!!!\n')
     else:
         pass
@@ -212,7 +214,7 @@ while game_on:
     print(f'Dealer has {dealer.cards[0]} and covered card \n')
     hit = True
     while hit:
-        choice = input("What do you want to do, stay or hit?  Scegli 'stay' o 'hit'  ")
+        choice = input("What do you want to do, stay or hit?  Choose 'stay' or 'hit'  ")
         if choice == 'stay':
             hit = False
             break
@@ -244,17 +246,17 @@ while game_on:
                 if d_value > 21:
                     print(f'Dealer BUSTS, {player.name} won the hand and the bet!')
                     dealer.balance = dealer.balance - player.bet
-                    player.balance = player.balance + 2*player.bet
+                    player.balance = player.balance + 2 * player.bet
                     deck.re_deck()
                 else:
                     print(f"Dealer won the hand and {player.name}'s money")
-                    dealer.balance = dealer.balance + 2*player.bet
+                    dealer.balance = dealer.balance + player.bet
                     deck.re_deck()
                     break
                 
                 
             # Cheching for dealer and player matched value scenario
-            
+
             elif d_value == 21 and p_value == 21:
                 p_blackjack = False
                 d_blackjack = False
@@ -271,7 +273,7 @@ while game_on:
                     print(f'Both {player.name} and dealer have Blackjack. How unfortunate!')
                     deck.re_deck()
                 elif d_blackjack:
-                    dealer.balance = dealer.balance + 2*player.bet
+                    dealer.balance = dealer.balance + player.bet
                     print(f'Dealer has Blackjack. You lost your hand...')
                     deck.re_deck()
                 elif p_blackjack:

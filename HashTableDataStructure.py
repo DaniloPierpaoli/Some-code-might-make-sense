@@ -56,4 +56,18 @@ class Hash_table():
                 del self.data[self._hash_(key)][i]
             i += 1    
                 
+                
+    def Keys(self):
+        #Retreiving all keys
+        keys_array = []
         
+        for data_block in self.data:
+            if data_block != None:
+                
+                #Loop through the potential collision
+                for values in data_block:
+                    if values[0] not in keys_array:
+                        keys_array.append(values[0])
+                        
+        return keys_array          
+           

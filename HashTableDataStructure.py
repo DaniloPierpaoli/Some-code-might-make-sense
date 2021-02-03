@@ -17,12 +17,43 @@ class Hash_table():
         return random.randint(0,self.size-1)
     
     def Set(self,key,value):
+        
         index = self._hash_(key)
-        self.data[index] = [key,value]
+        
+        # Managing collisions:
+        if self.data[index] == None:
+            self.data[index] = [None]
+            self.data[index][0] = [key,value]
+        else:
+            self.data[index].append([key,value])
+            
         
     def Get(self, key):
+        
         # Retrieve the index from the _hash_ function:
-        return self.data[self._hash_(key)][1]
+        go_address = self.data[self._hash_(key)]
+        
+        # Checking for collisions
+        if len(go_address) == 1:
+            return self.data[self._hash_(key)][0][1]
+        
+        # Retrieving values that use the same key from a collision:
+        else:
+            values = []
+            for item in go_address:
+                if item[0] == key:
+                    values.append(item[1])
+            return values        
+                    
     
     def Delete(self,key):
-        del self.data[self._hash_(key)]
+        
+        #Deleting keys and values
+        go_address = self.data[self._hash_(key)]
+        i = 0
+        for item in go_address:
+            if item[0] == key:
+                del self.data[self._hash_(key)][i]
+            i += 1    
+                
+        

@@ -82,7 +82,7 @@ class BinarySearchTree:
             
                
     def remove(self,value):
-        # This function deletes the node with he deleted node with minimum value node from the right subtree,
+        # This function deletes the node and finds the inorder successor in the minimum value node from the right subtree,
         # in the case of a node with 2 children
         
         
@@ -130,7 +130,7 @@ class BinarySearchTree:
                 else:
                     
                     #getting the minimum value node from the right subtree
-                    pointer = currentNode
+                    pointer = currentNode.right
                     while pointer.left != None:
                         pointer = pointer.left
                     print(f'Replacing {currentNode.value} with {pointer.value}')    
@@ -157,6 +157,11 @@ class BinarySearchTree:
                     currentNode = currentNode.right
                     flag = 'right'
                     
+                    
+                        
+                    
+        
+        
                     
                         
                     
